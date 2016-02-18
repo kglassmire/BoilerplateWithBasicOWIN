@@ -250,6 +250,7 @@
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="README.txt" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
@@ -290,7 +291,6 @@
     <Content Include="font\glyphicons-halflings-regular.woff" />
     <Content Include="font\glyphicons-halflings-regular.ttf" />
     <Content Include="font\glyphicons-halflings-regular.eot" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BoilerplateWithBasicOWIN.DataAccess\BoilerplateWithBasicOWIN.DataAccess.csproj">
