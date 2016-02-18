@@ -1,0 +1,57 @@
+﻿@model BoilerplateWithBasicOWIN.Models.SignInAccountModel
+
+@{
+    ViewBag.Title = "CreateAccount";
+}
+
+<h2>Create Account</h2>
+<div class="row">
+    @using (Html.BeginForm("CreateAccount", "Account", FormMethod.Post))
+    {
+        @*@Html.AntiForgeryToken()*@
+
+        <div class="row">
+            <hr />
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "validate" } })
+                    @Html.LabelFor(model => model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "validate" } })
+                    @Html.LabelFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.PasswordFor(model => model.Password, new { @class = "validate" })
+                    @Html.LabelFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "validate" })
+                    @Html.LabelFor(model => model.ConfirmPassword)
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <input type="submit" value="Sign In" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

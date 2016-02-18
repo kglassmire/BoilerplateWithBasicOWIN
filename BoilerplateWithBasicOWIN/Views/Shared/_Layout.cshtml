@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoilerplateWithBasicOWIN</title>
+    @Styles.Render("~/Content/material")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-wrapper grey darken-3">
+
+                <ul id="top-nav-1" class="left">
+                    <li><a href="#" data-activates="nav-mobile" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a></li>
+                </ul>
+                <ul id="top-nav" class="right hide-on-med-and-down">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Create Account", "CreateAccount", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(@User.Identity.Name, "Index", "Home")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Sign Out", "SignOut", "Login")</li>
+                    }
+                    else
+                    {
+                        <!-- Modal Trigger -->
+                        <li><a href="#modal1" class="modal-trigger">Sign In</a></li>
+                    }
+
+                </ul>
+            </div>
+        </nav>
+        <ul id="nav-mobile" class="side-nav">
+            <li class="logo active">
+                <a id="logo-container" class="brand-logo">
+                    Sections
+                    <i class="mdi-navigation-chevron-left small right"></i>
+                </a>
+            </li>
+        </ul>
+
+    </header>
+
+
+    <div class="row">
+        @RenderBody()
+
+
+        <footer class="page-footer deep-orange lighten-2">
+            <div class="footer-copyright">
+                <div class="row deep-orange lighten-1">
+                    <div class="col s6">
+                        &copy; @DateTime.Now.Year BoilerplateWithBasicOWIN
+                    </div>
+                    <div class="col s6">
+                        <span><a class="white-text text-lighten-4 right-align" href="#!">Email</a></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Login Modal Structure -->
+
+    <div id="modal1" class="modal">
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "loginForm" }))
+        {
+            <div class="modal-content">
+                <h4>Sign In</h4>
+                @Html.TextBox("UserName")
+                @Html.Password("Password")
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    Submit
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+        }
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/materialize")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script type="text/javascript">
+    // Initialize collapse button
+    $(".button-collapse").sideNav();
+    $("#logo-container").click(function () {
+        $(".button-collapse").sideNav('hide');
+    });
+    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+    $('.collapsible').collapsible();
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+    });
+</script>
