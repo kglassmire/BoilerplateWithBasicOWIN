@@ -1,2 +1,4 @@
 # BoilerplateWithBasicOWIN
-To whom it may concern (probably yourself Kris), see the readme.txt file in the web project. Those are the streamlined steps to get the assemblies, projects, etc. renamed properly.
+When creating a new site from this template, PLEASE reference this link below:
+
+http://stackoverflow.com/a/22200641
